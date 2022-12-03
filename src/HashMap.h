@@ -2,6 +2,25 @@
 #include "Restaurant.h"
 #include <vector>
 
+class bucket{
+    private:
+        // class variables
+        int hashCode; // hashcode identifying the bucket (the states name)
+        std::vector<Restaurant> chainList; // vector of restaurant "chained" in this bucket
+    public:
+        // getters
+        int getHashCode(); // returns hashcode integer
+        std::vector<Restaurant> getRestaurants(); // returns vector of "chained" restaurants stored in bucket
+
+        // setters
+        void addRestaurant(Restaurant R); // adds a restuarant to bucket
+        void setHashCode(int code); // sets the hashcode for bucket
+
+        // constructors
+        bucket();
+        bucket(int code);
+};
+
 class HashMap{
     private:
         // class variables
@@ -21,23 +40,4 @@ class HashMap{
         
         // hash function
         int hashFunction(string state);
-};
-
-class bucket{
-    private:
-        // class variables
-        int hashCode; // hashcode identifying the bucket (the states name)
-        std::vector<Restaurant> chainList; // vector of restaurant "chained" in this bucket
-    public:
-        // getters
-        int getHashCode(); // returns hashcode integer
-        std::vector<Restaurant> getRestaurants(); // returns vector of "chained" restaurants stored in bucket
-
-        // setters
-        void addRestaurant(Restaurant R); // adds a restuarant to bucket
-        void setHashCode(int code); // sets the hashcode for bucket
-
-        // constructors
-        bucket();
-        bucket(int code);
 };
