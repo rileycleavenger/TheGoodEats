@@ -55,7 +55,7 @@ void CSVReader::readInFiles(){
     string tempHours;
     string tempLong;
     string tempLat;
-    string isChain;
+    string isChain = "-1";
 
     // for parsing over any data we don't need
     string trashVal;

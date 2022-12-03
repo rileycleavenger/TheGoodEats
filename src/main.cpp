@@ -7,6 +7,7 @@ using namespace std;
 
 int main(){
 
+
     // data set is in 3 files, so have to store it accordingly
     vector<string> dataSets;
     dataSets.push_back("CSV/chainness_point_2021_part1.csv");
@@ -15,7 +16,9 @@ int main(){
 
     // create reader object and take in data, storing them in Hash Maps and Hash Sets
     CSVReader mainData(dataSets);
+
     mainData.readInFiles();
+    /*
     // hash map = mainData.GetMap()
     // hash set = mainData.GetSet()
 
@@ -23,6 +26,8 @@ int main(){
     for(int i = 0; i < testVec.size(); i++) {
         testVec[i].printRestaurant();
     }
+     */
+    cout << "testout" << endl;
 
 
     return 0;
