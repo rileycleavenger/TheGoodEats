@@ -14,6 +14,8 @@ int main(){
     // create reader object and take in data, storing them in Hash Maps and Hash Sets
     CSVReader mainData(dataSets);
     mainData.readInFiles();
+        // hash map = mainData.GetMap()
+        // hash set = mainData.GetSet()
 
 
     return 0;

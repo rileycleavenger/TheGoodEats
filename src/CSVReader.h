@@ -5,6 +5,8 @@
 #ifndef PROJECT3_CSVREADER_H
 #define PROJECT3_CSVREADER_H
 #include "Restaurant.h"
+#inlcude "HashMap.h"
+#inlcude "HashSet.h"
 #include <string>
 #include <vector>
 
