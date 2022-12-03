@@ -6,6 +6,7 @@
 #define PROJECT3_CSVREADER_H
 #include "Restaurant.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ private:
 public:
     // constructors
     CSVReader();
-    CSVReader(vector<string> filepaths);
+    CSVReader(vector<string> filepaths_);
 
     // getters
     vector<string> GetFilepaths();
@@ -27,9 +28,9 @@ public:
     HashSet<Restaurant> GetSet();
 
     // setters;
-    vector<string> SetFilepaths();
-    HashMap<Restaurant> SetMap();
-    HashSet<Restaurant> SetSet();
+    vector<string> SetFilepaths(vector<string> tempVec);
+    HashMap<Restaurant> SetMap(HashMap tempMap);
+    HashSet<Restaurant> SetSet(HashSet tempSet);
 
     // other functions
     void readInFiles();
