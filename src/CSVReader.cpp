@@ -20,27 +20,25 @@ CSVReader::CSVReader(vector<string> filepaths_){
 vector<string> CSVReader::GetFilepaths(){
     return filepaths;
 }
-/*
 HashMap<Restaurant> CSVReader::GetMap(){
     return restMap;
 }
 HashSet<Restaurant> CSVReader::GetSet(){
     return restSet
 }
-*/
+
 
 // setters;
 void CSVReader::SetFilepaths(vector<string> tempVec){
     filepaths = tempVec;
 }
-/*
 void CSVReader::SetMap(HashMap tempMap){
     restMap = tempMap;
 }
 void CSVReader::SetSet(HashSet tempSet){
     restSet = tempSet;
 }
- */
+
 
 // other functions
 void CSVReader::readInFiles(){
@@ -58,17 +56,19 @@ void CSVReader::readInFiles(){
     // for parsing over any data we don't need
     string trashVal;
 
-    // go through all files in filespaths vector
+    // go through all files in filepaths vector
     for (int i = 0; i < filepaths.size(); i++){
+
         // opens current file in vector
         ifstream file;
         file.open(filepaths[i]);
 
-        //reads header
+        // reads header line
         getline(file, trashVal);
 
-        //reads data
+        // reads data
         while (getline(file, tempName, ',')) {
+            // takes in csv data
             getline(file, tempFoodType, ',');
             getline(file, tempHours, ',');
             getline(file, tempState, ',');
@@ -83,13 +83,14 @@ void CSVReader::readInFiles(){
             getline(file, trashVal, ',');
             getline(file, isChain, ',');
 
-            //if the restaurant is not a chain it adds it to the data structures
+            // if the restaurant is not a chain it adds it to the data structures
             if(stoi(isChain) == 0){
                 Restaurant tempRest(tempName, tempState, tempCounty, tempFoodType, tempHours, stof(tempLong), stof(tempLat));
-                tempRest.printRestaurant();
-                //restMap.insert(tempRest);
-                //restSet.isert(tempRest);
+                // tempRest.printRestaurant(); //for testing
+                restMap.insert(tempRest);
+                restSet.insert(tempRest);
             }
         }
+        file.close();
     }
 }
