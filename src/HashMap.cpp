@@ -1,124 +1,77 @@
 #include "HashMap.h"
 
 // hash function
-
+int HashMap::hashFunction(float longitude, float latitude){
+    int product = (longitude + 180) * (latitude + 90);
+    return product;
+}
 
 // hash map getters
-bool find(const float key1, const float key2, Restaurant R){
-    float hashCode = hashFunction(key);
-
+std::vector<Restaurant> HashMap::find(string state, string county){
+    // traverse through hashmap checking restuarant state/county
+    std::vector<Restaurant> returnVector; // vector of all restaurants in county/state (initially empty)
+    // iterate through all buckets
+    std::vector<Restaurant> temp;
+    for(int i = 0; i < 64800; i++){
+        temp = bucketList[i].getRestaurants();
+        for(int j = 0; j < temp.size(); j++){
+            if(temp[j].getCounty() == county && temp[j].getState() = state){
+                returnVector.push_back(temp[j]);
+            }
+        }
+    }
+    return returnVector;
 };
 
 // hash map setters
-void insert(const float key1, const float key2, const Restuarant R){
- 
-/*
-        unsigned long hashValue = hashFunc(key);
-        HashNode<K, V> *prev = NULL;
-        HashNode<K, V> *entry = table[hashValue];
-
-        while (entry != NULL && entry->getKey() != key) {
-            prev = entry;
-            entry = entry->getNext();
-        }
-
-        if (entry == NULL) {
-            entry = new HashNode<K, V>(key, value);
-            if (prev == NULL) {
-                // insert as first bucket
-                table[hashValue] = entry;
-            } else {
-                prev->setNext(entry);
-            }
-        } else {
-            // just update the value
-            entry->setValue(value);
-        }
-*/
-    float hashCode = hashFunction(float key1, float key2);
-    node(hashCode, R) *Prev = NULL;
-    node(K,V) *entry = table[hashCode];
-
-    
-};
-void removeNode(const float key1, const float key2){
- 
- /*
-        unsigned long hashValue = hashFunc(key);
-        HashNode<K, V> *prev = NULL;
-        HashNode<K, V> *entry = table[hashValue];
-
-        while (entry != NULL && entry->getKey() != key) {
-            prev = entry;
-            entry = entry->getNext();
-        }
-
-        if (entry == NULL) {
-            // key not found
-            return;
-        }
-        else {
-            if (prev == NULL) {
-                // remove first bucket of the list
-                table[hashValue] = entry->getNext();
-            } else {
-                prev->setNext(entry->getNext());
-            }
-            delete entry;
-        }
- */
+void HashMap::insert(Restaurant R){
+    int code = hashFunction(R.getLongitude(), R.getLatitude());
+    bucketList[code].addRestaurant(R);    
+    return;
 };
 
 // hash map constructors
-HashMap(){
-    table = new node<K,V> *[TABLE_SIZE]();
+HashMap::HashMap(){
+    for(int i = 0; i < 64800; i++){
+        bucketList[i] = bucket(i);
+    }
+    return;
 };
 
 // hash map destructors
-~HashMap(){
-
- // Change This Up
- /*
-        // destroy all buckets one by one
-        for (int i = 0; i < TABLE_SIZE; ++i) {
-            HashNode<K, V> *entry = table[i];
-            while (entry != NULL) {
-                HashNode<K, V> *prev = entry;
-                entry = entry->getNext();
-                delete prev;
-            }
-            table[i] = NULL;
+HashMap::~HashMap(){
+/*
+    std::vector<Restaurant> temp;
+    for(int i = 0; i < 64800; i++){
+        temp = bucketList[i].getRestaurants();
+        for(int j = 0; j < temp.size(); j++){
+            
         }
-        // destroy the hash table
-        delete [] table;
- */
+    }
+*/
+    return;
 };
 
-// node getters
-float node::getHashCode(){
+// bucket getters
+int bucket::getHashCode(){
     return hashCode;
 };
-Restaurant node::getRestaurant(){
-    return rstrnt;
-
-};
-Node *node::getNextNode(){
-    return nextNode;
+std::vector<Restaurant> bucket::getRestaurants(){
+    // returns vector of chained restaurants with the same code
+    return chainList;
 };
 
-// node setters
-void node::setRestaurant(Restuarant R){
-    node::rstrnt = R;
+// bucket setters
+void bucket::addRestaurant(Restaurant R){
+    chainList.push_back(R);
+    return;
 };
-void node::setHashCode(float code){
+void bucket::setHashCode(int code){
     hashCode = code;
-};
-void node::setNextNode(Node* N){
-    nextNode = N;
+    return;
 };
 
-// node constructors
-node::node(const float K, const Restaurant R){
-    setRestaurant(R);
-    setHashCode(K);
+// bucket constructors
+bucket::bucket(int code){
+    setHashCode(code);
 };
