@@ -4,12 +4,14 @@
 
 #include "Restaurant.h"
 
+using namespace std;
+
 // getters
 string Restaurant::getName(){
     return name;
 }
 string Restaurant::getState(){
-    retuen state;
+    return state;
 }
 string Restaurant::getCounty(){
     return county;
@@ -17,7 +19,7 @@ string Restaurant::getCounty(){
 string Restaurant::getFoodType(){
     return foodType;
 }
-vector<string> Restaurant::getHours(){
+string Restaurant::getHours(){
     return hours;
 }
 float Restaurant::getLongitude(){
@@ -40,13 +42,13 @@ void Restaurant::setCounty(string county_){
 void Restaurant::setFoodType(string foodType_){
     foodType = foodType_;
 }
-void Restaurant::setHours(vector<string> hours_){
+void Restaurant::setHours(string hours_){
     hours = hours_;
 }
-void Restaurant::setLongitude(string longitude_){
+void Restaurant::setLongitude(float longitude_){
     longitude = longitude_;
 }
-void Restaurant::setLatitude(string latitude_){
+void Restaurant::setLatitude(float latitude_){
     latitude = latitude_;
 }
 
@@ -56,17 +58,28 @@ Restaurant::Restaurant(){
     state = "";
     county = "";
     foodType = "";
-    hours = [""];
+    hours = "";
     longitude = 0.0f;
     latitude = 0.0f;
 }
-Restaurant::Restaurant(string name_, string state_, string county_, string foodType_, vector<string> hours_, string longitude_, string latitude_){
+Restaurant::Restaurant(string name_, string state_, string county_, string foodType_, string hours_, float longitude_, float latitude_){
     name = name_;
-    state = sate_;
+    state = state_;
     county = county_;
     foodType = foodType_;
     hours = hours_;
     longitude = longitude_;
     latitude = latitude_;
+}
+
+// other functions
+void Restaurant::printRestaurant(){
+    cout << "name: " << name << endl;
+    cout << "state: " << state << endl;
+    cout << "county: " << county << endl;
+    cout << "foodType: " << foodType << endl;
+    cout << "hours: " << hours << endl;
+    cout << "longitude: " << longitude << endl;
+    cout << "latitude: " << latitude << endl;
 }
 

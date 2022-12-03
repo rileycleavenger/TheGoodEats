@@ -1,9 +1,7 @@
-//
-// Created by Riley Cleavenger on 11/22/22.
-//
+#include <string>
+#include <iostream>
 
-#ifndef PROJECT3_RESTAURANT_H
-#define PROJECT3_RESTAURANT_H
+using namespace std;
 
 class Restaurant{
 private:
@@ -13,7 +11,7 @@ private:
     string state;
     string county;
     string foodType;
-    vector<string> hours;
+    string hours;
     float longitude;
     float latitude;
 
@@ -24,7 +22,7 @@ public:
     string getState();
     string getCounty();
     string getFoodType();
-    vector<string> getHours();
+    string getHours();
     float getLongitude();
     float getLatitude();
 
@@ -33,13 +31,15 @@ public:
     void setState(string state_);
     void setCounty(string county_);
     void setFoodType(string foodType_);
-    void setHours(vector<string> hours_);
-    void setLongitude(string longitude_);
-    void setLatitude(string latitude_);
+    void setHours(string hours_);
+    void setLongitude(float longitude_);
+    void setLatitude(float latitude_);
 
     // constructors
     Restaurant();
-    Restaurant(string name_, string state_, string county_, string foodType_, vector<string> hours_, string longitude_, string latitude_);
+    Restaurant(string name_, string state_, string county_, string foodType_, string hours_, float longitude_, float latitude_);
+
+    // other functions
+    void printRestaurant();
 };
 
-#endif //PROJECT3_RESTAURANT_H
