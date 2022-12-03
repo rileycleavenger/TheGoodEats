@@ -1,7 +1,9 @@
 //
 // Created by Riley Cleavenger on 12/3/22.
 //
-#include "CSVreader.h"
+#include "CSVReader.h"
+
+using namespace std;
 
 int main(){
 
