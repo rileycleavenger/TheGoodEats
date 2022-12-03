@@ -16,7 +16,7 @@ std::vector<Restaurant> HashMap::find(string state, string county){
     std::vector<Restaurant> returnVector; // vector of all restaurants in county/state (initially empty)
     std::vector<Restaurant> temp; //array of all restaurants in specified state
     int index = hashFunction(state);
-    temp = temp = bucketList[index].getRestaurants();
+    temp = bucketList[index].getRestaurants();
     for(int j = 0; j < temp.size(); j++){
         if(temp[j].getCounty() == county){
             returnVector.push_back(temp[j]);
@@ -24,6 +24,9 @@ std::vector<Restaurant> HashMap::find(string state, string county){
     }
     return returnVector;
 };
+bucket HashMap::getBucketList(int index){
+    return bucketList[index];
+}
 
 // hash map setters
 void HashMap::insert(Restaurant R){

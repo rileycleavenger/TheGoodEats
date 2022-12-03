@@ -18,16 +18,28 @@ int main(){
     CSVReader mainData(dataSets);
 
     mainData.readInFiles();
-    /*
+
     // hash map = mainData.GetMap()
     // hash set = mainData.GetSet()
 
     vector<Restaurant> testVec = mainData.GetMap().find("FL", "Alachua");
-    for(int i = 0; i < testVec.size(); i++) {
-        testVec[i].printRestaurant();
+
+    /*
+    for(int i = 0; i < 50; i++){
+        for(int j = 0; j < mainData.GetMap().getBucketList(i).getRestaurants().size(); j++){
+            mainData.GetMap().getBucketList(i).getRestaurants()[j].printRestaurant();
+        }
     }
      */
-    cout << "testout" << endl;
+
+    /*
+    for(int i = 0; i < testVec.size(); i++) {
+        testVec[i].printRestaurant();
+        //cout << "bah!";
+    }
+    */
+
+    //cout << "testout" << endl;
 
 
     return 0;

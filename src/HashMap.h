@@ -33,6 +33,9 @@ class HashMap{
         // setters
         void insert(Restaurant R); // inserts a new restaurant into the hashmap
 
+        // getters
+        bucket getBucketList(int index);
+
         // constructors
         HashMap();
 

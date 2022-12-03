@@ -88,6 +88,12 @@ void CSVReader::readInFiles(){
             getline(file, trashVal, ',');
             getline(file, isChain);
 
+            tempName.erase(remove(tempName.begin(),tempName.end(),'\"'),tempName.end());
+            tempFoodType.erase(remove(tempFoodType.begin(),tempFoodType.end(),'\"'),tempFoodType.end());
+            tempHours.erase(remove(tempHours.begin(),tempHours.end(),'\"'),tempHours.end());
+            tempState.erase(remove(tempState.begin(),tempState.end(),'\"'),tempState.end());
+            tempCounty.erase(remove(tempCounty.begin(),tempCounty.end(),'\"'),tempCounty.end());
+
             // if the restaurant is not a chain it adds it to the data structures
             if(stoi(isChain) == 0){
                 Restaurant tempRest(tempName, tempState, tempCounty, tempFoodType, tempHours, stof(tempLong), stof(tempLat));
