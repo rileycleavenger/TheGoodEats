@@ -23,9 +23,11 @@ vector<string> CSVReader::GetFilepaths(){
 HashMap<Restaurant> CSVReader::GetMap(){
     return restMap;
 }
+/*
 HashSet<Restaurant> CSVReader::GetSet(){
     return restSet
 }
+*/
 
 
 // setters;
@@ -35,9 +37,11 @@ void CSVReader::SetFilepaths(vector<string> tempVec){
 void CSVReader::SetMap(HashMap tempMap){
     restMap = tempMap;
 }
+/*
 void CSVReader::SetSet(HashSet tempSet){
     restSet = tempSet;
 }
+ */
 
 
 // other functions
@@ -67,8 +71,9 @@ void CSVReader::readInFiles(){
         getline(file, trashVal);
 
         // reads data
-        while (getline(file, tempName, ',')) {
+        while (!file.eof()) {
             // takes in csv data
+            getline(file, tempName, ',');
             getline(file, tempFoodType, ',');
             getline(file, tempHours, ',');
             getline(file, tempState, ',');
@@ -81,14 +86,13 @@ void CSVReader::readInFiles(){
             getline(file, tempLong, ',');
             getline(file, tempLat, ',');
             getline(file, trashVal, ',');
-            getline(file, isChain, ',');
+            getline(file, isChain);
 
             // if the restaurant is not a chain it adds it to the data structures
             if(stoi(isChain) == 0){
                 Restaurant tempRest(tempName, tempState, tempCounty, tempFoodType, tempHours, stof(tempLong), stof(tempLat));
-                // tempRest.printRestaurant(); //for testing
-                restMap.insert(tempRest);
-                restSet.insert(tempRest);
+                //tempRest.printRestaurant(); //for testing
+                resMap.insert(tempRest);
             }
         }
         file.close();
