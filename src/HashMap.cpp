@@ -77,3 +77,6 @@ void bucket::setHashCode(int code){
 bucket::bucket(int code){
     setHashCode(code);
 };
+bucket::bucket(){
+    setHashCode(-1);
+}
