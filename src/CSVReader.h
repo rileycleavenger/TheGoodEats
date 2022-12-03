@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <assert.h>
+#pragma once
 
 using namespace std;
 

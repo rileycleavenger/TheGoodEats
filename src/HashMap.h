@@ -1,6 +1,7 @@
 #include <list>
 #include "Restaurant.h"
 #include <vector>
+#pragma once
 
 class bucket{
     private:
