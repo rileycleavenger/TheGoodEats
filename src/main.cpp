@@ -22,24 +22,11 @@ int main(){
     // hash map = mainData.GetMap()
     // hash set = mainData.GetSet()
 
-    vector<Restaurant> testVec = mainData.GetMap().find("FL", "Alachua");
-
-    /*
-    for(int i = 0; i < 50; i++){
-        for(int j = 0; j < mainData.GetMap().getBucketList(i).getRestaurants().size(); j++){
-            mainData.GetMap().getBucketList(i).getRestaurants()[j].printRestaurant();
-        }
-    }
-     */
-
-    /*
+    vector<Restaurant> testVec = mainData.GetMap().find("FL", "Monroe");
+    
     for(int i = 0; i < testVec.size(); i++) {
         testVec[i].printRestaurant();
-        //cout << "bah!";
     }
-    */
-
-    //cout << "testout" << endl;
 
 
     return 0;
