@@ -6,7 +6,7 @@ using namespace std;
 class Restaurant{
 private:
 
-    // class varaibles
+    // class variables
     string name;
     string state;
     string county;
