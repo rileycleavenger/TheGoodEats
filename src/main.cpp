@@ -14,16 +14,16 @@ int main(){
     dataSets.push_back("CSV/chainness_point_2021_part2.csv");
     dataSets.push_back("CSV/chainness_point_2021_part3.csv");
 
-    // create reader object and take in data, storing them in Hash Maps and Hash Sets
+    // create reader object and take in data, storing them in Hash Sets and Hash Sets
     CSVReader mainData(dataSets);
 
     mainData.readInFiles();
 
-    // hash map = mainData.GetMap()
+    // hash Set = mainData.GetSet()
     // hash set = mainData.GetSet()
 
-    vector<Restaurant> testVec = mainData.GetMap().find("FL", "Monroe");
-    
+    vector<Restaurant> testVec = mainData.GetSet().find("FL", "Monroe");
+
     for(int i = 0; i < testVec.size(); i++) {
         testVec[i].printRestaurant();
     }

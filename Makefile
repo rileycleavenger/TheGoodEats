@@ -4,8 +4,8 @@ CFLAGS=-c -Wall
 
 all: app
 
-app: main.o CSVReader.o Restaurant.o HashMap.o
-	$(CC) main.o CSVReader.o Restaurant.o HashMap.o -o app
+app: main.o CSVReader.o Restaurant.o HashSet.o
+	$(CC) main.o CSVReader.o Restaurant.o HashSet.o -o app
 
 main.o: src/main.cpp
 	$(CC) $(CFLAGS) src/main.cpp
@@ -16,9 +16,11 @@ CSVReader.o: src/CSVReader.cpp
 Restaurant.o: src/Restaurant.cpp
 	$(CC) $(CFLAGS) src/Restaurant.cpp
 
+HashSet.o: src/HashSet.cpp
+	$(CC) $(CFLAGS) src/HashSet.cpp
+
 HashMap.o: src/HashMap.cpp
 	$(CC) $(CFLAGS) src/HashMap.cpp
-
 
 clean:
 	rm -rf *o app

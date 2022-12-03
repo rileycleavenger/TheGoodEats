@@ -20,12 +20,12 @@ CSVReader::CSVReader(vector<string> filepaths_){
 vector<string> CSVReader::GetFilepaths(){
     return filepaths;
 }
-HashMap CSVReader::GetMap(){
-    return restMap;
+HashSet CSVReader::GetSet(){
+    return restSet;
 }
 /*
-HashSet<Restaurant> CSVReader::GetSet(){
-    return restSet
+HashMap CSVReader::GetMap(){
+    return restMap
 }
 */
 
@@ -34,12 +34,12 @@ HashSet<Restaurant> CSVReader::GetSet(){
 void CSVReader::SetFilepaths(vector<string> tempVec){
     filepaths = tempVec;
 }
-void CSVReader::SetMap(HashMap tempMap){
-    restMap = tempMap;
-}
-/*
 void CSVReader::SetSet(HashSet tempSet){
     restSet = tempSet;
+}
+/*
+void CSVReader::SetMap(HashMap tempMap){
+    restMap = tempMap;
 }
  */
 
@@ -98,7 +98,7 @@ void CSVReader::readInFiles(){
             if(stoi(isChain) == 0){
                 Restaurant tempRest(tempName, tempState, tempCounty, tempFoodType, tempHours, stof(tempLong), stof(tempLat));
                 //tempRest.printRestaurant(); //for testing
-                restMap.insert(tempRest);
+                restSet.insert(tempRest);
             }
         }
         file.close();
