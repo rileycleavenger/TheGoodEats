@@ -20,7 +20,7 @@ CSVReader::CSVReader(vector<string> filepaths_){
 vector<string> CSVReader::GetFilepaths(){
     return filepaths;
 }
-HashMap<Restaurant> CSVReader::GetMap(){
+HashMap CSVReader::GetMap(){
     return restMap;
 }
 /*
@@ -92,7 +92,7 @@ void CSVReader::readInFiles(){
             if(stoi(isChain) == 0){
                 Restaurant tempRest(tempName, tempState, tempCounty, tempFoodType, tempHours, stof(tempLong), stof(tempLat));
                 //tempRest.printRestaurant(); //for testing
-                resMap.insert(tempRest);
+                restMap.insert(tempRest);
             }
         }
         file.close();

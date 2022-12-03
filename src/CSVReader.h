@@ -1,5 +1,5 @@
 #include "Restaurant.h"
-#inlcude "HashMap.h"
+#include "HashMap.h"
 //#inlcude "HashSet.h"
 #include <iostream>
 #include <string>
@@ -14,7 +14,7 @@ class CSVReader{
 private:
     // variables
     vector<string> filepaths;
-    HashMap<Restaurant> restMap;
+    HashMap restMap;
     //HashSet<Restaurant> restSet;
 
 public:
@@ -24,7 +24,7 @@ public:
 
     // getters
     vector<string> GetFilepaths();
-    HashMap<Restaurant> GetMap();
+    HashMap GetMap();
     //HashSet<Restaurant> GetSet();
 
     // setters;
