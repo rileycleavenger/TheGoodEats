@@ -5,7 +5,7 @@
 class HashMap{
     private:
         // class variables
-        bucket bucketList[64800]; // array of buckets (each bucket hashcode is it's index in the array)
+        bucket bucketList[50]; // array of buckets (each bucket hashcode is it's index in the array)
     public:
         // getters
         std::vector<Restaurant> find(string state, string county); // returns a vector of restuarants in the specified state/county
@@ -20,13 +20,13 @@ class HashMap{
         ~HashMap();
         
         // hash function
-        int hashFunction(float longitude, float latitude);
+        int hashFunction(string state);
 };
 
 class bucket{
     private:
         // class variables
-        int hashCode; // hashcode identifying the bucket
+        int hashCode; // hashcode identifying the bucket (the states name)
         std::vector<Restaurant> chainList; // vector of restaurant "chained" in this bucket
     public:
         // getters

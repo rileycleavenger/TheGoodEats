@@ -1,23 +1,25 @@
 #include "HashMap.h"
 
 // hash function
-int HashMap::hashFunction(float longitude, float latitude){
-    int product = (longitude + 180) * (latitude + 90);
-    return product;
+int HashMap::hashFunction(string state){
+    string states[50] = {"AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY"};
+    for(int i = 0; i < 50; i++){
+        if(state == states[i]){
+            return i;
+        }
+    }
+    return -1;
 }
 
 // hash map getters
 std::vector<Restaurant> HashMap::find(string state, string county){
-    // traverse through hashmap checking restuarant state/county
     std::vector<Restaurant> returnVector; // vector of all restaurants in county/state (initially empty)
-    // iterate through all buckets
-    std::vector<Restaurant> temp;
-    for(int i = 0; i < 64800; i++){
-        temp = bucketList[i].getRestaurants();
-        for(int j = 0; j < temp.size(); j++){
-            if(temp[j].getCounty() == county && temp[j].getState() = state){
-                returnVector.push_back(temp[j]);
-            }
+    std::vector<Restaurant> temp; //array of all restaurants in specified state
+    int index = hashFunction(state);
+    temp = temp = bucketList[index].getRestaurants();
+    for(int j = 0; j < temp.size(); j++){
+        if(temp[j].getCounty() == county){
+            returnVector.push_back(temp[j]);
         }
     }
     return returnVector;
@@ -25,14 +27,14 @@ std::vector<Restaurant> HashMap::find(string state, string county){
 
 // hash map setters
 void HashMap::insert(Restaurant R){
-    int code = hashFunction(R.getLongitude(), R.getLatitude());
-    bucketList[code].addRestaurant(R);    
+    int code = hashFunction(R.getState());
+    bucketList[code].addRestaurant(R);   
     return;
 };
 
 // hash map constructors
 HashMap::HashMap(){
-    for(int i = 0; i < 64800; i++){
+    for(int i = 0; i < 50; i++){
         bucketList[i] = bucket(i);
     }
     return;
