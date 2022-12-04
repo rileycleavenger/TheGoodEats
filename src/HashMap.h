@@ -3,7 +3,7 @@
 #include <vector>
 #pragma once
 
-class bucket{
+class mapBucket{
     private:
         // class variables
         int hashCode; // hashcode identifying the bucket (the states name)
@@ -18,14 +18,14 @@ class bucket{
         void setHashCode(int code); // sets the hashcode for bucket
 
         // constructors
-        bucket();
-        bucket(int code);
+        mapBucket();
+        mapBucket(int code);
 };
 
 class HashMap{
     private:
         // class variables
-        vector<bucket> bucketList; // vector of buckets (each bucket hashcode is it's index in the array)
+        vector<mapBucket> bucketList; // vector of buckets (each bucket hashcode is it's index in the array)
     public:
         // getters
         std::vector<Restaurant> find(string state, string county); // returns a vector of restuarants in the specified state/county
@@ -34,7 +34,7 @@ class HashMap{
         void insert(string key, Restaurant R); // inserts a new restaurant into the hashSet
 
         // getters
-        vector<bucket> getBucketList();
+        vector<mapBucket> getBucketList();
 
         // constructors
         HashMap();
