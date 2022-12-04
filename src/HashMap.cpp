@@ -78,7 +78,7 @@ std::vector<Restaurant> HashMap::searchLongLat(float longitude, float latitude){
 
     return returnVector;
 }
-vector<bucket> HashMap::getBucketList(){
+vector<mapBucket> HashMap::getBucketList(){
     return bucketList;
 }
 
@@ -93,7 +93,7 @@ void HashMap::insert(string key, Restaurant R){
 HashMap::HashMap(){
     for(int i = 0; i <= 64800; i++){
         //bucketList[i] = bucket(i);
-        bucketList.push_back(bucket(i));
+        bucketList.push_back(mapBucket(i));
     }
     return;
 };
@@ -113,30 +113,30 @@ HashMap::~HashMap(){
 };
 
 // bucket getters
-int bucket::getHashCode(){
+int mapBucket::getHashCode(){
     return hashCode;
 };
-std::vector<pair<string, Restaurant>> bucket::getRestaurants(){
+std::vector<pair<string, Restaurant>> mapBucket::getRestaurants(){
     // returns vector of chained restaurants with the same code
     return chainList;
 };
 
 // bucket setters
-void bucket::addRestaurant(string key, Restaurant R){
+void mapBucket::addRestaurant(string key, Restaurant R){
     chainList.push_back(make_pair(key, R));
     return;
 };
-void bucket::setHashCode(int code){
+void mapBucket::setHashCode(int code){
     hashCode = code;
     return;
 };
 
 // bucket constructors
 
-bucket::bucket(int code){
+mapBucket::mapBucket(int code){
     setHashCode(code);
 };
 
-bucket::bucket(){
+mapBucket::mapBucket(){
     setHashCode(-1);
 }
