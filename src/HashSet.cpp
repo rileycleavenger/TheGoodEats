@@ -24,6 +24,18 @@ std::vector<Restaurant> HashSet::find(string state, string county){
     }
     return returnVector;
 };
+std::vector<Restaurant> HashSet::searchLongLat(float longitude, float latitude){
+    std::vector<Restaurant> returnVector;
+    //std::vector<Restaurant> temp;
+    for(int i = 0; i < 50; i++){
+        for(int j = 0; j < getBucketList(i).getRestaurants().size(); j++){
+            if(getBucketList(i).getRestaurants()[j].getLatitude() > latitude - 1 && getBucketList(i).getRestaurants()[j].getLatitude() < latitude + 1 && getBucketList(i).getRestaurants()[j].getLongitude() > longitude - 1 && getBucketList(i).getRestaurants()[j].getLongitude() < longitude + 1){
+                returnVector.push_back(getBucketList(i).getRestaurants()[j]);
+            }
+        }
+    }
+    return returnVector;
+}
 bucket HashSet::getBucketList(int index){
     return bucketList[index];
 }

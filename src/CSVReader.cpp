@@ -23,11 +23,11 @@ vector<string> CSVReader::GetFilepaths(){
 HashSet CSVReader::GetSet(){
     return restSet;
 }
-/*
+
 HashMap CSVReader::GetMap(){
-    return restMap
+    return restMap;
 }
-*/
+
 
 
 // setters;
@@ -37,11 +37,11 @@ void CSVReader::SetFilepaths(vector<string> tempVec){
 void CSVReader::SetSet(HashSet tempSet){
     restSet = tempSet;
 }
-/*
+
 void CSVReader::SetMap(HashMap tempMap){
     restMap = tempMap;
 }
- */
+ 
 
 
 // other functions
@@ -98,7 +98,10 @@ void CSVReader::readInFiles(){
             if(stoi(isChain) == 0){
                 Restaurant tempRest(tempName, tempState, tempCounty, tempFoodType, tempHours, stof(tempLong), stof(tempLat));
                 //tempRest.printRestaurant(); //for testing
+                // match to lat/long key values (no negatives)
+                string tempKey = to_string(tempRest.getLatitude() + 90) + "_" + to_string(tempRest.getLongitude() + 180);
                 restSet.insert(tempRest);
+                restMap.insert(tempKey, tempRest);
             }
         }
         file.close();

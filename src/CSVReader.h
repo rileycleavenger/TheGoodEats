@@ -1,6 +1,6 @@
 #include "Restaurant.h"
 #include "HashSet.h"
-#inlcude "HashMap.h"
+#include "HashMap.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -16,7 +16,7 @@ private:
     // variables
     vector<string> filepaths;
     HashSet restSet;
-    //HashMap restMap;
+    HashMap restMap;
 
 public:
     // constructors
@@ -26,12 +26,12 @@ public:
     // getters
     vector<string> GetFilepaths();
     HashSet GetSet();
-    //HashMap GetSet();
+    HashMap GetMap();
 
     // setters;
     void SetFilepaths(vector<string> tempVec);
     void SetSet(HashSet tempSet);
-    //void SetMap(HashMap tempSet);
+    void SetMap(HashMap tempSet);
 
     // other functions
     void readInFiles();

@@ -29,7 +29,7 @@ class HashSet{
     public:
         // getters
         std::vector<Restaurant> find(string state, string county); // returns a vector of restuarants in the specified state/county
-
+        std::vector<Restaurant> searchLongLat(float longitude, float latitude);
         // setters
         void insert(Restaurant R); // inserts a new restaurant into the hashSet
 
