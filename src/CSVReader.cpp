@@ -97,9 +97,9 @@ void CSVReader::readInFiles(){
             // if the restaurant is not a chain it adds it to the data structures
             if(stoi(isChain) == 0){
                 Restaurant tempRest(tempName, tempState, tempCounty, tempFoodType, tempHours, stof(tempLong), stof(tempLat));
-                //tempRest.printRestaurant(); //for testing
+
                 // match to lat/long key values (no negatives)
-                string tempKey = to_string(tempRest.getLatitude() + 90) + "_" + to_string(tempRest.getLongitude() + 180);
+                string tempKey = to_string(tempRest.getLatitude() + 90.0f) + "_" + to_string(tempRest.getLongitude() + 180.0f);
                 restSet.insert(tempRest);
                 restMap.insert(tempKey, tempRest);
             }

@@ -2,15 +2,6 @@
 
 // hash function
 int HashMap::hashFunction(string key){
-    /*
-    string states[50] = {"AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY"};
-    for(int i = 0; i < 50; i++){
-        if(state == states[i]){
-            return i;
-        }
-    }
-    return -1;
-    */
    string lat = "";
    string longi = "";
    bool firstHalf = true;
@@ -32,49 +23,47 @@ int HashMap::hashFunction(string key){
 // hash Map getters
 std::vector<Restaurant> HashMap::find(string state, string county){
     std::vector<Restaurant> returnVector;
-    /*
-    std::vector<Restaurant> returnVector; // vector of all restaurants in county/state (initially empty)
-    std::vector<pair<string,Restaurant>> temp; //array of all restaurants in specified state
-    int index = hashFunction(state);
-    temp = bucketList[index].getRestaurants();
-    for(int j = 0; j < temp.size(); j++){
-        if(temp[j].second.getCounty() == county){
-            returnVector.push_back(temp[j].second);
-        }
-    }
-    return returnVector;
-    */
-   for(int i = 0; i < getBucketList().size(); i++){
-        for(int j = 0; j < getBucketList()[i].getRestaurants().size(); j++){
-            if(getBucketList()[i].getRestaurants()[j].second.getState() == state && getBucketList()[i].getRestaurants()[j].second.getCounty() == county){
-                returnVector.push_back((getBucketList()[i].getRestaurants()[j].second));
-            }
-        }
-    }
+    for(int i = 0; i < getBucketList().size(); i++){
+       for (int j = 0; j < getBucketList()[i].getRestaurants().size(); j++) {
+           if (getBucketList()[i].getRestaurants()[j].second.getState() == state &&
+               getBucketList()[i].getRestaurants()[j].second.getCounty() == county) {
+               returnVector.push_back((getBucketList()[i].getRestaurants()[j].second));
+           }
+       }
+   }
+   return returnVector;
 };
 std::vector<Restaurant> HashMap::searchLongLat(float longitude, float latitude){
     // match to lat/long key values (no negatives)
     longitude += 180;
     latitude += 90;
     std::vector<Restaurant> returnVector;
-    int maxKey = (latitude + 1) * (longitude + 1);
-    int minKey = (latitude - 1) * (longitude - 1);
+    int minKey;
+    int maxKey;
+
+    if(latitude >= 180 && longitude >= 360)
+        maxKey = (latitude) * (longitude);
+    else if(latitude >= 180)
+        maxKey = (latitude) * (longitude + 1);
+    else if(longitude >= 360)
+        maxKey = (latitude + 1) * (longitude);
+    else
+        maxKey = (latitude + 1) * (longitude + 1);
+
+    if(latitude < 1 && longitude < 1)
+        minKey = (latitude) * (longitude);
+    else if(latitude < 1)
+        minKey = (latitude) * (longitude - 1);
+    else if(longitude < 1)
+        minKey = (latitude - 1) * (longitude);
+    else
+        minKey = (latitude - 1) * (longitude - 1);
+
     for(int i = minKey; i <= maxKey; i++){
         for(int j = 0; j < getBucketList()[i].getRestaurants().size(); j++){
             returnVector.push_back((getBucketList()[i].getRestaurants()[j].second));
         }
     }
-
-    //std::vector<Restaurant> temp;
-    /*
-    for(int i = 0; i < 50; i++){
-        for(int j = 0; j < getBucketList(i).getRestaurants().size(); j++){
-            if(getBucketList(i).getRestaurants()[j].getLatitude() > latitude - 1 && getBucketList(i).getRestaurants()[j].getLatitude() < latitude + 1 && getBucketList(i).getRestaurants()[j].getLongitude() > longitude - 1 && getBucketList(i).getRestaurants()[j].getLongitude() < longitude + 1){
-                returnVector.push_back(getBucketList(i).getRestaurants()[j]);
-            }
-        }
-    }
-    */
 
     return returnVector;
 }
@@ -116,7 +105,7 @@ HashMap::~HashMap(){
 int mapBucket::getHashCode(){
     return hashCode;
 };
-std::vector<pair<string, Restaurant>> mapBucket::getRestaurants(){
+std::vector<pair<string, Restaurant> > mapBucket::getRestaurants(){
     // returns vector of chained restaurants with the same code
     return chainList;
 };

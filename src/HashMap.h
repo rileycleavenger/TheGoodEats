@@ -1,17 +1,18 @@
 #include <list>
 #include "Restaurant.h"
 #include <vector>
+#include <utility>
 #pragma once
 
 class mapBucket{
     private:
         // class variables
         int hashCode; // hashcode identifying the bucket (the states name)
-        std::vector<pair<string,Restaurant>> chainList; // vector of restaurant "chained" in this bucket
+        std::vector<pair<string,Restaurant> > chainList; // vector of restaurant "chained" in this bucket
     public:
         // getters
         int getHashCode(); // returns hashcode integer
-        std::vector<pair<string, Restaurant>> getRestaurants(); // returns vector of "chained" restaurants stored in bucket
+        std::vector<pair<string, Restaurant> > getRestaurants(); // returns vector of "chained" restaurants stored in bucket
 
         // setters
         void addRestaurant(string key, Restaurant R); // adds a restuarant to bucket
