@@ -19,9 +19,6 @@ int main(){
     CSVReader mainData(dataSets);
     mainData.readInFiles();
 
-
-
-
     // hash Set = mainData.GetSet()
     // hash set = mainData.GetSet()
 
@@ -30,7 +27,7 @@ int main(){
 
     // timing functions
     startTime = chrono::system_clock::now();
-    vector<Restaurant> testVec = mainData.GetMap().searchLongLat(-74, 40.7);
+    vector<Restaurant> testVec = mainData.GetMap().searchLongLat(-165.40257, 64.49702);
     endTime = chrono::system_clock::now();
     chrono::duration<double> totalTime = endTime - startTime;
     cout << "Time to search hashMap with long/lat: " << totalTime.count() << " seconds" << endl;
@@ -48,7 +45,7 @@ int main(){
     cout << "Time to search hashSet with long/lat: " << totalTime3.count() << " seconds" << endl;
 
     startTime = chrono::system_clock::now();
-    vector<Restaurant> testVec4 = mainData.GetSet().find("AL", "Lee");
+    vector<Restaurant> testVec4 = mainData.GetSet().find("HI", "Hawaii");
     endTime = chrono::system_clock::now();
     chrono::duration<double> totalTime4 = endTime - startTime;
     cout << "Time to search hashSet with State and County: " << totalTime4.count() << " seconds" << endl;
