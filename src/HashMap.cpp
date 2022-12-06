@@ -35,6 +35,8 @@ std::vector<Restaurant> HashMap::find(string state, string county){
 };
 std::vector<Restaurant> HashMap::searchLongLat(float longitude, float latitude){
     // match to lat/long key values (no negatives)
+    float ogLong = longitude;
+    float ogLat = latitude;
     longitude += 180;
     latitude += 90;
     std::vector<Restaurant> returnVector;
@@ -61,7 +63,8 @@ std::vector<Restaurant> HashMap::searchLongLat(float longitude, float latitude){
 
     for(int i = minKey; i <= maxKey; i++){
         for(int j = 0; j < getBucketList()[i].getRestaurants().size(); j++){
-            returnVector.push_back((getBucketList()[i].getRestaurants()[j].second));
+            if(getBucketList()[i].getRestaurants()[j].second.getLongitude() >= (ogLong - 1) && getBucketList()[i].getRestaurants()[j].second.getLongitude() <= (ogLong + 1) && getBucketList()[i].getRestaurants()[j].second.getLatitude() >= (ogLat - 1) && getBucketList()[i].getRestaurants()[j].second.getLatitude() <= (ogLat + 1))
+                returnVector.push_back((getBucketList()[i].getRestaurants()[j].second));
         }
     }
 

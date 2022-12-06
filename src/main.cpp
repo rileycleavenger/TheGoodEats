@@ -30,13 +30,13 @@ int main(){
 
     // timing functions
     startTime = chrono::system_clock::now();
-    vector<Restaurant> testVec = mainData.GetMap().searchLongLat(-165.40257, 64.49702);
+    vector<Restaurant> testVec = mainData.GetMap().searchLongLat(-74, 40.7);
     endTime = chrono::system_clock::now();
     chrono::duration<double> totalTime = endTime - startTime;
     cout << "Time to search hashMap with long/lat: " << totalTime.count() << " seconds" << endl;
 
     startTime = chrono::system_clock::now();
-    vector<Restaurant> testVec2 = mainData.GetMap().find("AL", "Lee");
+    vector<Restaurant> testVec2 = mainData.GetMap().find("HI", "Hawaii");
     endTime = chrono::system_clock::now();
     chrono::duration<double> totalTime2 = endTime - startTime;
     cout << "Time to search hashMap with State and County: " << totalTime2.count() << " seconds" << endl;
@@ -52,5 +52,6 @@ int main(){
     endTime = chrono::system_clock::now();
     chrono::duration<double> totalTime4 = endTime - startTime;
     cout << "Time to search hashSet with State and County: " << totalTime4.count() << " seconds" << endl;
+
     return 0;
 }
