@@ -139,7 +139,7 @@ int main(){
             cin >> userCounty;
             cout << endl << "Searching..." << endl << endl;
             startTime = chrono::system_clock::now();
-            vector <Restaurant> resultVec = mainData.GetSet().find(userState, userCounty);
+            vector <Restaurant> resultVec = mainData.GetMap().find(userState, userCounty);
             endTime = chrono::system_clock::now();
             totalTime6 = endTime - startTime;
             optionSixRan = true;
